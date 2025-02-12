@@ -1,10 +1,11 @@
 ## Steps to ensure your access token is added to app.py AND/OR run locally on Docker (2/12/2025)
 
 1. Ensure the following, [1) you cloned the First_agent Space to your HuggingFace Space, 2) you created an Access Token in your HuggingSpace user profile. (Settings/Access Tokens) 3) Not sure if needed, but I made sure I got access to Meta's Llama 3.2 language models & evals (Shows in Settings/Gated Repositories section) may take 1+hours].
-    For 1.2)-> Create Access Token by going to Settings/Access Tokens, click "Create new token", selecting Fine-grained is fine, add a token name, you may want to checkmark Repositories, Infererence, Webooks, ...?. Click 'Create Token' and make sure you store the token somewhere, don't include it in any public repos.
-2. Start editing your app.py file, and at the top add this import:
+
+   > For 1.2)-> Create Access Token by going to Settings/Access Tokens, click "Create new token", selecting Fine-grained is fine, add a token name, you may want to checkmark Repositories, Infererence, Webooks, ...?. Click 'Create Token' and make sure you store the token somewhere, don't include it in any public repos.
+3. Start editing your app.py file, and at the top add this import:
     import os
-3. I added a few different models in comments in the below code. In the area of app.py code where model is defined, replace with this code:
+4. I added a few different models in comments in the below code. In the area of app.py code where model is defined, replace with this code:
     ```
     model = HfApiModel(
     max_tokens=2096,
@@ -14,6 +15,7 @@
     model_id='meta-llama/Llama-3.2-3B-Instruct',
     custom_role_conversions=None,
     token=os.getenv('HF_TOKEN'),   #https://huggingface.co/docs/smolagents/reference/models#smolagents.HfApiModel
+    )
     ```
 3. Make sure you have a browser open to your First_agent Space, click on the Settings link. In the Variables and secrets' section, add a new secret by clicking 'New secret'. I named it 'HF_TOKEN', then put your access token (from Step 1) as the value.
 4. I tried running the Space, but the service still seemed overloaded. So, I tried running it locally with Docker.
