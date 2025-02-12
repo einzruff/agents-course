@@ -4,8 +4,10 @@
 
    > For 1.2)-> Create Access Token by going to Settings/Access Tokens, click "Create new token", selecting Fine-grained is fine, add a token name, you may want to checkmark Repositories, Infererence, Webooks, ...?. Click 'Create Token' and make sure you store the token somewhere, don't include it in any public repos.
 3. Start editing your app.py file, and at the top add this import:
-    import os
-4. I added a few different models in comments in the below code. In the area of app.py code where model is defined, replace with this code:
+   ```
+   import os
+   ```
+5. I added a few different models in comments in the below code. In the area of app.py code where model is defined, replace with this code:
     ```
     model = HfApiModel(
     max_tokens=2096,
